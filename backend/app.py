@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file, send_from_directory
 from flask_cors import CORS
 import os
 import zipfile
@@ -8,12 +8,17 @@ from xxe_generator import XXEGenerator
 from xlsx_processor import XLSXProcessor
 from werkzeug.utils import secure_filename
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../frontend/build', static_url_path='')
 CORS(app)
 
 # Initialize components
 xxe_gen = XXEGenerator()
 xlsx_proc = XLSXProcessor()
+
+@app.route('/')
+def serve_frontend():
+    """Serve React frontend"""
+    return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/api/health', methods=['GET'])
 def health_check():
