@@ -7,7 +7,7 @@ function App() {
   const [currentStep, setCurrentStep] = useState('upload');
   const [fileInfo, setFileInfo] = useState(null);
   const [payloads, setPayloads] = useState([]);
-  const [results, setResults] = useState(null);
+  // const [results, setResults] = useState(null); // Commented out unused variable
   const [error, setError] = useState('');
 
   const handleFileUploaded = (info) => {
@@ -29,7 +29,7 @@ function App() {
     setCurrentStep('upload');
     setFileInfo(null);
     setPayloads([]);
-    setResults(null);
+    // setResults(null); // Commented out since results is commented
     setError('');
   };
 

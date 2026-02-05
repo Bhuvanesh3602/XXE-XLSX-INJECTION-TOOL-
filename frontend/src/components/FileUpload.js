@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import axios from 'axios';
+// import axios from 'axios'; // Commented out unused import
 
 const FileUpload = ({ onFileUploaded, onError }) => {
   const [dragActive, setDragActive] = useState(false);

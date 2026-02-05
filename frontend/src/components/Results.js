@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios'; // Commented out unused import
 
 const Results = ({ payloads, fileInfo, onBack, onReset }) => {
   const [selectedPayload, setSelectedPayload] = useState(null);
