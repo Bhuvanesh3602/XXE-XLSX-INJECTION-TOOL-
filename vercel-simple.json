@@ -1,1 +1,0 @@
-{\n  \"version\": 2,\n  \"builds\": [\n    {\n      \"src\": \"frontend/package.json\",\n      \"use\": \"@vercel/static-build\",\n      \"config\": {\n        \"distDir\": \"build\"\n      }\n    }\n  ],\n  \"routes\": [\n    {\n      \"src\": \"/(.*)\",\n      \"dest\": \"/frontend/$1\"\n    }\n  ]\n}
