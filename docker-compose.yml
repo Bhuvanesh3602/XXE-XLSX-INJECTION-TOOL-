@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  xxe-xlsx-tool:
+    build: .
+    ports:
+      - "3000:5000"  # Map container port 5000 to host port 3000
+    environment:
+      - FLASK_ENV=production
+      - PORT=5000
+    volumes:
+      - ./processed:/app/processed  # Persist processed files
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Development version with hot reload
+  xxe-xlsx-tool-dev:
+    build: 
+      context: .
+      target: backend
+    ports:
+      - "5000:5000"  # Backend only
+      - "3001:3000"  # Frontend dev server
+    environment:
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+    volumes:
+      - ./backend:/app
+      - ./frontend:/app/frontend
+      - ./processed:/app/processed
+    profiles:
+      - dev
