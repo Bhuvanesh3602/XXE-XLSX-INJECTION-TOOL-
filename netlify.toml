@@ -1,6 +1,6 @@
 [build]
   base = "frontend"
-  command = "npm ci && chmod +x node_modules/.bin/react-scripts && npm run build"
+  command = "chmod +x build-render.sh && ./build-render.sh"
   publish = "build"
 
 [build.environment]
