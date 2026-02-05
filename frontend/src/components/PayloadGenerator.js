@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
 const PayloadGenerator = ({ fileInfo, onPayloadsGenerated, onError, onBack }) => {
   const [collaborator, setCollaborator] = useState('');
@@ -15,7 +16,7 @@ const PayloadGenerator = ({ fileInfo, onPayloadsGenerated, onError, onBack }) =>
 
     setGenerating(true);
     try {
-      const response = await axios.post('http://localhost:5000/api/generate-payloads', {
+      const response = await axios.post(`${API_BASE_URL}/api/generate-payloads`, {
         target_url: targetUrl,
         collaborator: collaborator,
         attack_type: attackType

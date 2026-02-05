@@ -225,9 +225,11 @@ if __name__ == '__main__':
     # Create processed directory if it doesn't exist
     os.makedirs('processed', exist_ok=True)
     
+    port = int(os.environ.get('PORT', 5000))
+    
     print("Starting XXE XLSX Tool Backend...")
     print("Supported file types: XLSX, ZIP")
-    print("Health check: http://localhost:5000/api/health")
-    print("API Base URL: http://localhost:5000/api/")
+    print(f"Health check: http://localhost:{port}/api/health")
+    print(f"API Base URL: http://localhost:{port}/api/")
     
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=False, host='0.0.0.0', port=port)
