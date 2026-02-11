@@ -201,41 +201,7 @@ flowchart TD
 
 ## ⚙️ Installation
 
-### 🐳 Docker Deployment (Recommended - Works on ALL Laptops!)
-
-**✅ One-click deployment - No code download needed!**
-
-```bash
-# Prerequisites: Only Docker Desktop needed!
-# Download: https://docker.com/get-started
-
-# Run directly from Docker Hub:
-docker run -d -p 8080:5000 bhuvanesh3602/xxe-xlsx-tool
-
-# Access at: http://localhost:8080
-```
-
-**🎉 That's it! Your XXE XLSX Tool is running!**
-
-### 🛠️ Docker Management
-
-```bash
-# Linux/macOS
-./deploy.sh start    # Start application
-./deploy.sh stop     # Stop application
-./deploy.sh logs     # View logs
-./deploy.sh clean    # Clean up
-
-# Windows
-deploy.bat start     # Start application
-deploy.bat stop      # Stop application
-deploy.bat logs      # View logs
-deploy.bat clean     # Clean up
-```
-
-### 💻 Manual Installation (Alternative)
-
-**Only if you prefer not to use Docker**
+### 🔧 Prerequisites
 
 ```bash
 # Required Software
@@ -268,56 +234,17 @@ cd backend && python app.py
 cd frontend && npm start
 ```
 
-### 🐳 Docker Deployment (Recommended)
+### 🐳 Docker Setup (Optional)
 
-**✅ Works on ANY laptop - Windows, macOS, Linux!**
-
-```bash
-# Quick Start (One Command)
-docker-compose up -d
-
-# Access at http://localhost:3000
-```
-
-#### 🚀 Deployment Options
-
-| Method | Command | Use Case |
-|--------|---------|----------|
-| **Production** | `./deploy.sh start` | Ready-to-use application |
-| **Development** | `./deploy.sh dev` | Code development |
-| **Windows** | `deploy.bat start` | Windows users |
-
-#### 📋 Complete Docker Commands
-
-```bash
-# 1. Build the image
-./deploy.sh build
-
-# 2. Start application
-./deploy.sh start
-# → Access at http://localhost:3000
-
-# 3. View logs
-./deploy.sh logs
-
-# 4. Stop application
-./deploy.sh stop
-
-# 5. Clean up
-./deploy.sh clean
-```
-
-#### 🔧 Manual Docker Commands
-
-```bash
-# Build and run manually
-docker build -t xxe-xlsx-tool .
-docker run -p 3000:5000 xxe-xlsx-tool
-
-# Using docker-compose
-docker-compose up -d        # Start
-docker-compose down         # Stop
-docker-compose logs -f      # View logs
+```dockerfile
+# Dockerfile example
+FROM python:3.11-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+EXPOSE 5000
+CMD ["python", "app.py"]
 ```
 
 ---
