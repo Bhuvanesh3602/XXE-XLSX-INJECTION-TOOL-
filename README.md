@@ -203,21 +203,16 @@ flowchart TD
 
 ### 🐳 Docker Deployment (Recommended - Works on ALL Laptops!)
 
-**✅ One-click deployment on Windows, macOS, and Linux**
+**✅ One-click deployment - No code download needed!**
 
 ```bash
-# Prerequisites: Only Docker needed!
-# Download Docker: https://docker.com/get-started
+# Prerequisites: Only Docker Desktop needed!
+# Download: https://docker.com/get-started
 
-# 1. Clone repository
-git clone https://github.com/Bhuvanesh3602/XXE-XLSX-INJECTION-TOOL-.git
-cd XXE-XLSX-INJECTION-TOOL-
+# Run directly from Docker Hub:
+docker run -d -p 8080:5000 bhuvanesh3602/xxe-xlsx-tool
 
-# 2. Start application (one command!)
-docker-compose up -d
-
-# 3. Access application
-# → Open http://localhost:3000
+# Access at: http://localhost:8080
 ```
 
 **🎉 That's it! Your XXE XLSX Tool is running!**
